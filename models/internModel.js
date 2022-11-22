@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
 
 const internSchema = new mongoose.Schema({
-    name : {type:String, required:true},
-    email: {type:String, required:true, unique:true},
-    mobile: {type:String, required:true,unique:true},
+    name : {type:String, required:true, trim:true, lowercase:true},
+    email: {type:String, required:true, unique:true, trim:true, lowercase:true},
+    mobile: {type:String, required:true,unique:true,trim:true},
     collegeId: {type: mongoose.Schema.Types.ObjectId, ref:'college'},
     isDeleted: {type:Boolean, default:false}
 

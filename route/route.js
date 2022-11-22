@@ -10,6 +10,7 @@ router.get("/servertest", (req, res) => res.send("server working fine !"))
 router.post("/functionup/colleges",validation.collegeValidation ,collegeController.createCollege )
 
 router.post("/functionup/interns",validation.internValidation, internController.createIntern)
+
 router.get("/functionup/collegeDetails", collegeController.getColleges)
 
 

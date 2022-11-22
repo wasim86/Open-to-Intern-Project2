@@ -19,10 +19,17 @@ const createCollege = async (req,res)=>{
 const getColleges = async (req, res) => {
     try {
         let collegeName = req.query.collegeName;
-        
         if (!collegeName) {
             return res.status(400).send({status: false, message: "Please Enter college Name"});
         }
+        function validatename(input){
+            let re = /^[A-Za-z ]+$/
+            return re.test(input)
+        }
+        if(validatename(collegeName)==false) return res.status(400).send({status:false, message:"College Name is Invalid"})
+
+        
+        
 
         if (collegeName) {
             const isValidName = await collegeModel.findOne({ name: collegeName})
@@ -31,6 +38,7 @@ const getColleges = async (req, res) => {
             }
         }
         const collegeData = await collegeModel.findOne({ name: collegeName })
+        console.log(collegeData)
         if(collegeData.isDeleted == true) {
             return res.status(400).send({ status: false, message: "this college data is deleted"})
         }

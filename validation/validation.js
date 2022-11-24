@@ -1,7 +1,7 @@
 const collegeModel= require("../models/collegeModel")
 
 const mongoose= require("mongoose")
-const internModel = require("../models/internModel")
+const internModel = require("../models/internModel");
 
 function typeValid(input){
     try{
